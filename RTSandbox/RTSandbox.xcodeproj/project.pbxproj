@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2B1B552C7EE84F002A7954 /* RTSandboxDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B1B542C7EE84F002A7954 /* RTSandboxDetailView.swift */; };
 		1D8B82812C7DAE2800FD2714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B82802C7DAE2800FD2714 /* AppDelegate.swift */; };
 		1D8B82852C7DAE2800FD2714 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B82842C7DAE2800FD2714 /* ViewController.swift */; };
 		1D8B82882C7DAE2800FD2714 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1D8B82872C7DAE2800FD2714 /* Base */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D2B1B542C7EE84F002A7954 /* RTSandboxDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSandboxDetailView.swift; sourceTree = "<group>"; };
 		1D8B827D2C7DAE2800FD2714 /* RTSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D8B82802C7DAE2800FD2714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D8B82842C7DAE2800FD2714 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				1D8B82942C7DAEF400FD2714 /* RTSandboxFileModel.swift */,
 				1D8B82952C7DAEF400FD2714 /* RTSandboxTableViewCell.swift */,
 				1D8B82962C7DAEF400FD2714 /* RTSandboxViewController.swift */,
+				1D2B1B542C7EE84F002A7954 /* RTSandboxDetailView.swift */,
 				1D8B829B2C7DAF2300FD2714 /* RTSanboxBundle.bundle */,
 			);
 			path = Sandbox;
@@ -159,6 +162,7 @@
 				1D8B829A2C7DAEF400FD2714 /* RTSandboxViewController.swift in Sources */,
 				1D8B82852C7DAE2800FD2714 /* ViewController.swift in Sources */,
 				1D8B82812C7DAE2800FD2714 /* AppDelegate.swift in Sources */,
+				1D2B1B552C7EE84F002A7954 /* RTSandboxDetailView.swift in Sources */,
 				1D8B82982C7DAEF400FD2714 /* RTSandboxFileModel.swift in Sources */,
 				1D8B82992C7DAEF400FD2714 /* RTSandboxTableViewCell.swift in Sources */,
 			);
@@ -310,9 +314,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NU39VV8DNB;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9CN4829674;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RTSandbox/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -326,8 +332,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cn...RTSandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bankcomm.sandBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "com.bankcomm.*.dev";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,9 +347,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NU39VV8DNB;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9CN4829674;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RTSandbox/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -355,8 +365,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cn...RTSandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bankcomm.sandBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "com.bankcomm.*.dev";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

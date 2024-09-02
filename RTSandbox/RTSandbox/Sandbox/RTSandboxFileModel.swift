@@ -30,6 +30,9 @@ enum RTSandboxFileType: String {
 
 class RTSandboxFileModel: NSObject {
     
+    
+    var ownerAccountName: String?
+    
     var realPath: String?
     
     var createTime: Date?
@@ -62,10 +65,9 @@ class RTSandboxFileModel: NSObject {
     
     var owner: String?
     
-    var fileType = RTSandBoxFileType.unkonwn
+    var fileType = RTSandboxFileType.unkonwn
     
-    
-    func analyseFileType(_ pathExtension: String) -> RTSandBoxFileType{
+    func analyseFileType(_ pathExtension: String) -> RTSandboxFileType{
         
         switch pathExtension.lowercased() {
         case "jpeg": fallthrough
@@ -116,7 +118,6 @@ class RTSandboxFileModel: NSObject {
             
         case "plist":
             return .plist
-            
         case "html":
             return .html
         case "js":
@@ -139,4 +140,28 @@ class RTSandboxFileModel: NSObject {
         return RTSandboxFileType.unkonwn
     }
 
+}
+
+extension Date{
+    
+    
+    func toString(_ format: String = "YYYYMMdd-HH:mm:ss.SSS") -> String{
+        
+        let formatter = Date.cnFormarter()
+        
+        formatter.dateFormat = format
+        
+        return formatter.string(from: self)
+        
+    }
+    
+    static func cnFormarter() -> DateFormatter {
+        
+        let formatter = DateFormatter.init()
+        formatter.locale = Locale.init(identifier: "zh_Hans_CN")
+        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.iso8601)
+        
+        return formatter
+    }
+    
 }

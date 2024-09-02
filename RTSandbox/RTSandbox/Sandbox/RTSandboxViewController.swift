@@ -47,7 +47,7 @@ open class RTSandboxViewController: UITableViewController {
         self.title = rootFileModel.fileName
         if self.firstLoad == true{
             let queue = DispatchQueue.global()
-            self.title = "HomeDirectory"
+            self.title = "Home"
             queue.async {
                 self.rootFileModel.size = self.getFileSize(rootModel: self.rootFileModel)
                 DispatchQueue.main.async {
@@ -91,7 +91,7 @@ open class RTSandboxViewController: UITableViewController {
                 newModel.createTime = att[FileAttributeKey.creationDate] as? Date
                 newModel.modificationDate = att[FileAttributeKey.modificationDate] as? Date
                 newModel.systemSize = att[FileAttributeKey.systemSize] as? Int64 ?? 0
-               
+                newModel.ownerAccountName = att[FileAttributeKey.ownerAccountName] as? String
             }
             if newModel.isDirectory == true{
                 newModel.size = self.getFileSize(rootModel: newModel)
@@ -125,8 +125,24 @@ extension RTSandboxViewController {
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RTSandBoxTableViewCell") as! RTSandboxTableViewCell
-        cell.model = rootFileModel.childList?[indexPath.row]
+                
+        cell.model =  rootFileModel.childList?[indexPath.row];
+        cell.detailBtnClick = { [weak self] model in
+            if let md = model{
+                self?.showDetaiView(model: md)
+            }
+          
+        }
         return cell
+    }
+    
+    
+    private func showDetaiView(model: RTSandboxFileModel){
+        
+        let detaiview = RTSandboxDetailView(frame:self.view.bounds,sandboxModel: model);
+        
+        view.addSubview(detaiview)
+        
     }
     
     
@@ -229,35 +245,37 @@ extension RTSandboxViewController {
             return nil
         }
         
-        let readHandle = FileHandle(forReadingAtPath: arPath)
+        return model.realPath
         
-        let formatter = DateFormatter.init()
-//        formatter.locale = Locale.init(identifier: "")
-        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.iso8601)
-        formatter.dateFormat = "YYYYMMdd-HH:mm:ss.SSS";
-        let dateString = formatter .string(from: Date())
-        let tempPath = NSTemporaryDirectory().appending("\(model.fileName!)-\(dateString).zip")
-    
-        FileManager.default.createFile(atPath: tempPath, contents: Data.init())
-    
-        let writeHandle = FileHandle(forWritingAtPath: tempPath)
-        
-        let averageSize = 5.0 * 1000 * 1000
-        
-        let count = ceil(Double(model.size) * 1.0 / averageSize)
-        
-        for _ in 0..<Int(count) {
-            autoreleasepool {
-                if let data = readHandle?.readData(ofLength: Int(averageSize)){
-                    writeHandle?.write(data)
-                }
-            }
-        }
-        
-        readHandle?.closeFile()
-        writeHandle?.closeFile()
-    
-        return tempPath
+//        let readHandle = FileHandle(forReadingAtPath: arPath)
+//        
+//        let formatter = DateFormatter.init()
+//        formatter.locale = Locale.init(identifier: "zh_Hans_CN")
+//        formatter.calendar = Calendar.init(identifier: Calendar.Identifier.iso8601)
+//        formatter.dateFormat = "YYYYMMdd-HH:mm:ss.SSS";
+//        let dateString = formatter .string(from: Date())
+//        let tempPath = NSTemporaryDirectory().appending("\(model.fileName!)-\(dateString).zip")
+//    
+//        FileManager.default.createFile(atPath: tempPath, contents: Data.init())
+//    
+//        let writeHandle = FileHandle(forWritingAtPath: tempPath)
+//        
+//        let averageSize = 5.0 * 1000 * 1000
+//        
+//        let count = ceil(Double(model.size) * 1.0 / averageSize)
+//        
+//        for _ in 0..<Int(count) {
+//            autoreleasepool {
+//                if let data = readHandle?.readData(ofLength: Int(averageSize)){
+//                    writeHandle?.write(data)
+//                }
+//            }
+//        }
+//        
+//        readHandle?.closeFile()
+//        writeHandle?.closeFile()
+//    
+//        return tempPath
     }
     
     

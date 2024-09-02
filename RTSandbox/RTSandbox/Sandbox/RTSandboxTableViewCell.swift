@@ -10,6 +10,9 @@ import UIKit
 class RTSandboxTableViewCell: UITableViewCell {
     
     
+    var detailBtnClick:((_ model: RTSandboxFileModel?)->())?
+    
+    
     var model: RTSandboxFileModel? {
         willSet{
          
@@ -98,7 +101,6 @@ class RTSandboxTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         let contraints = contraintsClosure(view)
         self.addConstraints(contraints)
-        
     }
     
     
@@ -158,6 +160,9 @@ class RTSandboxTableViewCell: UITableViewCell {
     
     @objc private func clickDetail(btn: UIButton){
     
+        if self.detailBtnClick != nil{
+            self.detailBtnClick!(self.model)
+        }
     }
     
     
